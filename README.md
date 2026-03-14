@@ -4,6 +4,8 @@
 
 > **Civic Newsroom is an editorial toolkit, not a news organization.** It provides prompts, protocols, and templates for AI-assisted analysis of public government records. Users are solely responsible for verifying, editing, and publishing any content produced using this system. This toolkit is designed to complement existing local media, not replace it.
 
+> **Want a desktop app instead?** The [Civic Transparency Toolkit](https://github.com/scottconverse/civic-transparency-toolkit) wraps this same nine-agent pipeline into a free desktop app with automated execution, source management, and one-click export. Same editorial architecture, no copy-pasting required.
+
 Since 2005, more than 2,500 U.S. newspapers have closed. Municipal governments continue generating millions of pages of public records — budgets, permits, zoning changes, contracts, council votes — but in most communities, nobody is reading them. Nobody is translating them into stories residents can act on. The information exists. The analysis doesn't.
 
 Civic Newsroom is a complete, free, prompt-based system that lets anyone stand up a functioning civic reporting operation using AI tools they already have access to (Claude, ChatGPT, Gemini, or any capable LLM). No coding required. No server infrastructure. No journalism degree.
