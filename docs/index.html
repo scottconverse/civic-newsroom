@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civic Newsroom — AI-Powered Civic Transparency Toolkit</title>
-    <meta name="description" content="Open-source toolkit for AI-powered civic transparency. Turns public records into accessible civic reports. Nine-agent editorial pipeline. No coding required.">
+    <title>Civic Newsroom — Open-Source Civic Transparency Workflow</title>
+    <meta name="description" content="An open-source prompt system for turning local public records into structured leads, evidence packs, and draft civic reporting.">
     <meta property="og:title" content="Civic Newsroom">
-    <meta property="og:description" content="An open-source toolkit for AI-powered civic transparency — turning public records into accessible civic reports. Nine-agent editorial pipeline with adversarial verification and anti-plagiarism safeguards.">
+    <meta property="og:description" content="An open-source prompt system for turning local public records into structured leads, evidence packs, and draft civic reporting.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scottconverse.github.io/civic-newsroom">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,39 @@
             margin: 0 auto;
         }
 
+        /* --- NAV BAR --- */
+        nav.sticky-nav {
+            position: sticky;
+            top: 0;
+            background: var(--paper);
+            border-bottom: 1px solid var(--rule);
+            padding: 1rem 0;
+            z-index: 100;
+            font-family: 'Inter', sans-serif;
+        }
+
+        nav.sticky-nav .nav-container {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+        }
+
+        nav.sticky-nav a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.15s ease;
+            font-weight: 500;
+        }
+
+        nav.sticky-nav a:hover {
+            color: var(--accent);
+        }
+
         /* --- HERO --- */
         .hero {
             padding: 3rem 0;
@@ -91,6 +124,20 @@
 
         .hero-text p + p {
             margin-top: 1.2rem;
+        }
+
+        .trust-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--accent-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .trust-note strong {
+            color: var(--accent);
         }
 
         .hero-cta {
@@ -124,36 +171,47 @@
         }
         .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* --- STATS BAR --- */
-        .stats {
+        /* --- VALUE PROPS STRIP --- */
+        .value-props {
             display: flex;
             justify-content: center;
             gap: 3rem;
-            padding: 1.8rem 0;
+            padding: 2rem 0;
             border-bottom: 1px solid var(--rule);
             flex-wrap: wrap;
         }
 
-        .stat {
+        .value-prop {
             text-align: center;
+            max-width: 200px;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
+        .value-prop-marker {
+            width: 2rem;
+            height: 2rem;
+            background: var(--accent-light);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-prop-marker::before {
+            content: "◆";
             color: var(--accent);
-            line-height: 1.2;
+            font-size: 0.8rem;
         }
 
-        .stat-label {
+        .value-prop-text {
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1.5;
         }
 
-        /* --- PIPELINE SECTION --- */
+        /* --- WORKFLOW SECTION --- */
         .section {
             padding: 3rem 0;
             border-bottom: 1px solid var(--rule);
@@ -171,13 +229,14 @@
             font-size: 1.05rem;
         }
 
-        .pipeline-grid {
+        .workflow-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.25rem;
+            margin-bottom: 2rem;
         }
 
-        .agent-card {
+        .workflow-card {
             background: var(--card-bg);
             border: 1px solid var(--rule);
             border-radius: 8px;
@@ -186,11 +245,11 @@
             transition: border-color 0.15s ease;
         }
 
-        .agent-card:hover {
+        .workflow-card:hover {
             border-color: var(--accent);
         }
 
-        .agent-number {
+        .workflow-label {
             font-family: 'Inter', sans-serif;
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -200,13 +259,115 @@
             margin-bottom: 0.3rem;
         }
 
-        .agent-name {
+        .workflow-title {
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 0.4rem;
         }
 
-        .agent-desc {
+        .workflow-desc {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .workflow-details {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            padding-top: 1.5rem;
+        }
+
+        details {
+            cursor: pointer;
+        }
+
+        details summary {
+            font-weight: 600;
+            font-size: 0.95rem;
+            user-select: none;
+            padding: 0.5rem 0;
+        }
+
+        details summary:hover {
+            color: var(--accent);
+        }
+
+        details p {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* --- VISUAL WORKFLOW DIAGRAM --- */
+        .diagram-section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .workflow-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            background: var(--accent-light);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .flow-arrow {
+            color: var(--rule);
+            font-size: 1.5rem;
+        }
+
+        /* --- WHAT YOU GET SECTION --- */
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .outcome-card {
+            background: var(--card-bg);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .screenshot-placeholder {
+            background: var(--paper);
+            border: 2px dashed var(--rule);
+            border-radius: 8px;
+            padding: 4rem 1rem;
+            text-align: center;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .outcome-card strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .outcome-card p {
             font-size: 0.95rem;
             color: var(--muted);
             line-height: 1.6;
@@ -264,7 +425,50 @@
             justify-content: center;
         }
 
+        /* --- DELIVERY FORMATS --- */
+        .delivery-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-card {
+            background: var(--card-bg);
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .delivery-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .delivery-card p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .delivery-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
         /* --- AUDIENCE --- */
+        .audience-intro {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
         .audience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -286,6 +490,29 @@
             font-size: 0.92rem;
             color: var(--muted);
             line-height: 1.5;
+        }
+
+        /* --- WHAT THIS IS NOT --- */
+        .not-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .not-list li {
+            padding-left: 1.75rem;
+            margin-bottom: 0.85rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        .not-list li::before {
+            content: "−";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
         }
 
         /* --- FOOTER --- */
@@ -310,6 +537,14 @@
             text-decoration: underline;
         }
 
+        .footer-trust {
+            font-size: 0.92rem;
+            color: var(--muted);
+            margin: 0.75rem 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
         .footer-license {
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
@@ -322,10 +557,16 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .stats { gap: 1.5rem; }
+            .value-props { gap: 1.5rem; }
             .hero-cta { flex-direction: column; }
             .btn { text-align: center; }
-            .pipeline-grid { grid-template-columns: 1fr; }
+            .workflow-grid { grid-template-columns: 1fr; }
+            .outcomes-grid { grid-template-columns: 1fr; }
+            .screenshots { grid-template-columns: 1fr; }
+            .delivery-cards { grid-template-columns: 1fr; }
+            nav.sticky-nav .nav-container { gap: 1rem; font-size: 0.75rem; }
+            .workflow-flow { gap: 0.5rem; }
+            .flow-step { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -335,144 +576,185 @@
     <div class="container">
         <div class="masthead">Open Source &middot; MIT License &middot; No Coding Required</div>
         <h1>Civic Newsroom</h1>
-        <p class="subtitle">An open-source toolkit for AI-powered civic transparency in any community</p>
+        <p class="subtitle">An open-source prompt system for turning local public records into structured leads, evidence packs, and draft civic reporting</p>
     </div>
 </header>
+
+<nav class="sticky-nav">
+    <div class="nav-container">
+        <a href="#how-it-works">How it works</a>
+        <a href="#what-you-get">What you get</a>
+        <a href="#workflow-protections">Workflow protections</a>
+        <a href="#get-started">Get started</a>
+        <a href="#what-is-not">Limits</a>
+    </div>
+</nav>
 
 <section class="hero">
     <div class="container">
         <div class="hero-text">
             <p>Since 2005, more than 2,500 U.S. newspapers have closed. City councils still meet. Budgets still get passed. Contracts still get awarded. But in most communities, nobody is reading any of it.</p>
-            <p>Civic Newsroom is a complete, free editorial pipeline that turns your city's public records into accessible civic reports &mdash; using AI tools you already have access to. Nine coordinated agents handle everything from signal detection to publication-ready copy, with built-in safeguards against hallucination, plagiarism, and one-sided analysis.</p>
+            <p>Civic Newsroom is a human-operated workflow for people who want to examine city agendas, budgets, contracts, and public records more systematically. It uses modular AI prompts to help detect story leads, organize supporting evidence, and draft explainers or articles for review.</p>
+            <div class="trust-note">
+                <strong>Human review required.</strong> The system helps with discovery, organization, and drafting. It does not independently verify truth or replace editorial judgment.
+            </div>
         </div>
         <div class="hero-cta">
-            <a href="https://github.com/scottconverse/civic-newsroom" class="btn btn-primary">View on GitHub</a>
-            <a href="https://github.com/scottconverse/civic-newsroom/tree/main/quickstart" class="btn btn-secondary">Quickstart Guide</a>
-        </div>
-        <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: #e8f0e2; border-radius: 8px; border-left: 4px solid #2d5016;">
-            <p style="font-size: 0.95rem; margin: 0; line-height: 1.6;">
-                <strong>New: Desktop App Available</strong> &mdash; Want automated pipeline execution, source management, and one-click export instead of copy-pasting prompts? See the <a href="https://github.com/scottconverse/civic-transparency-toolkit" style="color: #2d5016; font-weight: 600;">Civic Transparency Toolkit</a> &mdash; the same nine-agent pipeline as a free desktop app.
-            </p>
+            <a href="#how-it-works" class="btn btn-primary">See How It Works</a>
+            <a href="https://github.com/scottconverse/civic-newsroom/tree/main/quickstart" class="btn btn-secondary">Read the Quickstart</a>
+            <a href="https://github.com/scottconverse/civic-newsroom" class="btn btn-secondary">View the Prompt Collection</a>
+            <a href="https://github.com/scottconverse/civic-newsroom" class="btn btn-secondary">View on GitHub</a>
         </div>
     </div>
 </section>
 
-<div class="stats">
-    <div class="stat">
-        <div class="stat-number">9</div>
-        <div class="stat-label">AI Agents</div>
+<div class="value-props">
+    <div class="value-prop">
+        <div class="value-prop-marker"></div>
+        <div class="value-prop-text">Detect public-record story leads</div>
     </div>
-    <div class="stat">
-        <div class="stat-number">5</div>
-        <div class="stat-label">How-To Guides</div>
+    <div class="value-prop">
+        <div class="value-prop-marker"></div>
+        <div class="value-prop-text">Cross-check contested claims</div>
     </div>
-    <div class="stat">
-        <div class="stat-number">6</div>
-        <div class="stat-label">Templates</div>
+    <div class="value-prop">
+        <div class="value-prop-marker"></div>
+        <div class="value-prop-text">Draft civic stories for review</div>
     </div>
-    <div class="stat">
-        <div class="stat-number">0</div>
-        <div class="stat-label">Lines of Code</div>
+    <div class="value-prop">
+        <div class="value-prop-marker"></div>
+        <div class="value-prop-text">Open-source prompt workflow</div>
     </div>
 </div>
 
+<section class="section" id="how-it-works">
+    <div class="wide-container">
+        <h2>How the workflow works</h2>
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <div class="workflow-label">Step 1</div>
+                <div class="workflow-title">Detect</div>
+                <div class="workflow-desc">Scan agendas, public documents, and municipal sources for potentially important developments.</div>
+            </div>
+            <div class="workflow-card">
+                <div class="workflow-label">Step 2</div>
+                <div class="workflow-title">Verify</div>
+                <div class="workflow-desc">Run structured counter-search, source review, and issue checks before trusting a claim.</div>
+            </div>
+            <div class="workflow-card">
+                <div class="workflow-label">Step 3</div>
+                <div class="workflow-title">Draft</div>
+                <div class="workflow-desc">Produce a clear, human-reviewed writeup, explainer, or story draft.</div>
+            </div>
+        </div>
+
+        <div class="workflow-details">
+            <details>
+                <summary>Show implementation details</summary>
+                <p>Implemented through nine modular prompts: Lead detection · Story expansion · Signal discovery · Adversarial verification · Integrity review · Legal guidance · Plain-language rewrite · Grounding · Standalone research and writing</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<section class="diagram-section">
+    <div class="wide-container">
+        <div class="workflow-flow">
+            <div class="flow-step">Public records</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Detect</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Verify</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Draft</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Human review</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step">Share or publish</div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="what-you-get">
+    <div class="wide-container">
+        <h2>What you get</h2>
+        <div class="outcomes-grid">
+            <div class="outcome-card">
+                <strong>Lead list</strong>
+                <p>Prioritized developments worth checking</p>
+            </div>
+            <div class="outcome-card">
+                <strong>Evidence pack</strong>
+                <p>Source-linked notes, claims, and contradictions</p>
+            </div>
+            <div class="outcome-card">
+                <strong>Draft story</strong>
+                <p>A readable explainer or article draft</p>
+            </div>
+            <div class="outcome-card">
+                <strong>Hold report</strong>
+                <p>Reasons a story should not be published yet</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="section">
     <div class="wide-container">
-        <h2>The Pipeline</h2>
-        <p class="section-intro">Nine agents, each handling a different stage of the civic reporting process.</p>
-        <div class="pipeline-grid">
-            <div class="agent-card">
-                <div class="agent-number">Agent 1</div>
-                <div class="agent-name">News Aggregator</div>
-                <div class="agent-desc">Scans your city's public records, agendas, and government portals. Produces 15&ndash;25 prioritized story leads daily with source conflict resolution and skip-logic for missing packets.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 2</div>
-                <div class="agent-name">Story Expansion</div>
-                <div class="agent-desc">Converts the strongest leads into 400&ndash;800 word publication-ready stories with pre-expansion verification gate, standardized confidence scoring, and revision pathways for suppressed stories.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 3</div>
-                <div class="agent-name">Black Desk</div>
-                <div class="agent-desc">Speculative signal radar. Looks for the dog that didn't bark &mdash; absences, anomalies, and fiscal stress patterns. Includes defined cluster thresholds and tiered source references.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 4</div>
-                <div class="agent-name">Dark Signal Desk</div>
-                <div class="agent-desc">Mandatory adversarial four-gate verification with reporting handoff. Verified signals route to the daily pipeline or standalone research. Requires searching 3+ platforms within a 90-day window with documented query variations.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 5</div>
-                <div class="agent-name">Integrity Checker</div>
-                <div class="agent-desc">Universal final gate &mdash; every story from any prompt must pass this five-part audit before publication. Tests links, audits claims against Tier A sources, flags missing voices, and provides hold/publish/correct guidance with CRITICAL/MINOR severity.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 6</div>
-                <div class="agent-name">First Amendment Counsel</div>
-                <div class="agent-desc">Legal guidance on press freedom issues &mdash; defamation, SLAPP suits, source protection, public records access. Includes plain-language definitions of legal concepts like &ldquo;actual malice.&rdquo;</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 7</div>
-                <div class="agent-name">Plain-Language Translator</div>
-                <div class="agent-desc">Rewrites complex civic reporting into clear, accessible language without changing the facts. Now includes failure-path explanations for conditional policies.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 8</div>
-                <div class="agent-name">Civic Grounding Protocol</div>
-                <div class="agent-desc">Anti-plagiarism safeguards with primary source clarifications. Ensures reporting traces back to primary public records, not other journalists&rsquo; work, with revision pathways for suppressed stories.</div>
-            </div>
-            <div class="agent-card">
-                <div class="agent-number">Agent 9</div>
-                <div class="agent-name">Story Research &amp; Writing</div>
-                <div class="agent-desc">Standalone research-and-write agent. Give it a topic, it runs a five-stage sequence with attribution templates and source conflict handling. Must pass the Integrity Checker before publication.</div>
-            </div>
+        <h2>Example output</h2>
+        <p class="section-intro">What the workflow produces at each stage.</p>
+        <div class="outcomes-grid">
+            <div class="screenshot-placeholder">[Example lead card]</div>
+            <div class="screenshot-placeholder">[Example evidence or audit block]</div>
+            <div class="screenshot-placeholder">[Example suppressed or held story]</div>
+            <div class="screenshot-placeholder">[Example final reviewed draft excerpt]</div>
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="workflow-protections">
     <div class="container">
-        <h2>Built-In Safeguards</h2>
-        <p class="section-intro">AI-assisted civic reporting fails in specific, predictable ways. This system prevents each of them architecturally.</p>
+        <h2>Workflow Protections</h2>
+        <p class="section-intro">Civic Newsroom is designed to reduce common AI reporting failures by forcing more explicit sourcing, counter-checking, and review steps. It does not guarantee correctness. It makes weak or unresolved work easier to spot before publication.</p>
 
         <div class="safeguard">
-            <h3>Adversarial Verification</h3>
-            <p>A mandatory four-gate protocol forces the system to search at least 3 platforms within a 90-day window, using 3+ query variations, and document every search attempt before any contested claim can advance. AI will produce one-sided analysis without this gate. The protocol makes that failure mode structurally impossible.</p>
+            <h3>Structured counter-checking</h3>
+            <p>Contested or ambiguous claims should be searched across multiple source types with documented query variations before they advance.</p>
         </div>
 
         <div class="safeguard">
-            <h3>Anti-Plagiarism Architecture</h3>
-            <p>The Civic Grounding Protocol ensures every claim traces back to primary public records. Other outlets' coverage can tell you what to look for. It can never be your source.</p>
+            <h3>Primary-source grounding</h3>
+            <p>Claims should be tied back to original public records whenever possible, not just other coverage or commentary.</p>
         </div>
 
         <div class="safeguard">
-            <h3>Suppression Ledger</h3>
-            <p>Every killed story gets a record: why it was killed, what was missing, and what would make it publishable. Nothing disappears silently. Suppressed stories include a defined revision pathway for reopening when evidence appears.</p>
+            <h3>Suppression and hold paths</h3>
+            <p>Weak, contested, or incomplete stories should be flagged, held, or suppressed with a visible reason.</p>
         </div>
 
         <div class="safeguard">
-            <h3>Integrity Auditing</h3>
-            <p>The Integrity Checker is the universal final gate for the entire system. Every story &mdash; whether from the daily pipeline or standalone research &mdash; must pass its five-part independent audit before publication. No prompt can self-certify its own output as publication-ready.</p>
+            <h3>Independent review step</h3>
+            <p>Drafts should pass through a separate review prompt or operator check before publication.</p>
         </div>
 
         <div class="safeguard">
-            <h3>Source Tier System</h3>
-            <p>A shared reference defines four confidence tiers &mdash; from primary government records (Tier A) through community signals (Tier C) to experimental sources (Tier D). Every agent in the pipeline uses the same definitions, ensuring consistent sourcing standards across the entire editorial process.</p>
+            <h3>Shared source standards</h3>
+            <p>The workflow distinguishes stronger and weaker source categories so the operator can judge confidence more consistently.</p>
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="get-started">
     <div class="container">
-        <h2>Get Started in 30 Minutes</h2>
+        <h2>Get started</h2>
         <ol class="steps">
-            <li>Clone or download the repository from GitHub</li>
-            <li>Find your city's key URLs: council agenda portal, official news page, school district site</li>
-            <li>Fill in the News Aggregator prompt with your city's info</li>
-            <li>Paste it into Claude or Gemini (both free; requires a large context window &mdash; ChatGPT free tier is too small)</li>
-            <li>Read the output &mdash; you'll get 15&ndash;25 story leads from your city's public records</li>
-            <li>Expand the best leads into full stories using the Story Expansion agent</li>
-            <li>Run every story through the Integrity Checker before publishing</li>
+            <li>Choose one city or institution to track.</li>
+            <li>Gather a small set of public source URLs.</li>
+            <li>Run the lead-detection prompt in a large-context AI model.</li>
+            <li>Review the strongest leads manually.</li>
+            <li>Use the verification and grounding prompts on anything contested or important.</li>
+            <li>Draft a story or explainer only after the evidence is clear.</li>
+            <li>Review again before sharing or publishing.</li>
         </ol>
         <div style="margin-top: 1.75rem;">
             <a href="https://github.com/scottconverse/civic-newsroom/tree/main/quickstart" class="btn btn-primary">Read the Quickstart Guide</a>
@@ -482,7 +764,27 @@
 
 <section class="section">
     <div class="wide-container">
-        <h2>Who This Is For</h2>
+        <h2>Same method, two delivery formats</h2>
+        <div class="delivery-cards">
+            <div class="delivery-card">
+                <h3>Civic Newsroom</h3>
+                <p>An open-source prompt collection. Copy and paste into Claude, Gemini, or another large-context AI model. Full control over your data and workflow. Free.</p>
+            </div>
+            <div class="delivery-card">
+                <h3>Civic Transparency Toolkit</h3>
+                <p>A free desktop app that runs the same workflow with automated pipeline execution, source management, and one-click export. Easier to use, no copy-pasting required.</p>
+            </div>
+        </div>
+        <div class="delivery-footer">
+            Both use the same core workflow and both require human review before publication.
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="wide-container">
+        <h2>Who this is for</h2>
+        <p class="audience-intro">Best for users willing to read source material and review AI output before sharing it publicly.</p>
         <div class="audience-grid">
             <div class="audience-item">
                 <strong>Engaged Residents</strong>
@@ -512,13 +814,26 @@
     </div>
 </section>
 
+<section class="section" id="what-is-not">
+    <div class="container">
+        <h2>What this is not</h2>
+        <ul class="not-list">
+            <li>Not an autonomous newsroom</li>
+            <li>Not a replacement for reporting judgment</li>
+            <li>Not a guarantee that a draft is correct</li>
+            <li>Not legal advice</li>
+            <li>Not a substitute for reading original records on important claims</li>
+        </ul>
+    </div>
+</section>
+
 <footer>
     <div class="container">
         <p class="footer-credit">
             Created by <strong>Scott Converse</strong> &mdash; founder of ClickCaster, co-founder of The Longmont Observer.<br>
-            Built with the conviction that the information to hold local government accountable already exists in public records.<br>
             <a href="https://github.com/scottconverse/civic-newsroom">github.com/scottconverse/civic-newsroom</a>
         </p>
+        <p class="footer-trust">Open-source workflow for civic transparency. Use responsibly. Review sources before making public claims.</p>
         <p class="footer-license">MIT License &middot; Use it, fork it, adapt it, share it</p>
     </div>
 </footer>
