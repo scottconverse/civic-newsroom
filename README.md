@@ -1,12 +1,24 @@
 # Civic Newsroom
 
-**An open-source toolkit for AI-powered civic transparency — turning public records into accessible civic reports.**
+> **A civic journalism curriculum for anyone with a browser and a question about their city government**
+
+Nine editorial prompts built to newspaper standards — paste into any AI, no software required. Primary-source grounded. Not a community tool — a journalism tool.
+
+---
+
+## Three ways to use the civic editorial system
+
+| | What it is | Best for |
+|---|---|---|
+| **civic-newsroom** — you are here | Nine editorial prompts you paste into any AI. No software, no setup. Built to newspaper standards. | Journalists, researchers, and anyone who wants newspaper-grade civic coverage from their browser |
+| **[civic-transparency-toolkit](https://github.com/scottconverse/civic-transparency-toolkit)** | Desktop app that runs the pipeline automatically | Residents, HOA boards, neighborhood newsletters, and community groups who want to know what's happening at city hall |
+| **[civic-scanner](https://github.com/scottconverse/civic-scanner)** | Claude Code workflow with structured reports and hard editorial gates | Newsroom operators and power users who need structured intelligence reports and managing editor review |
+
+---
 
 > **Civic Newsroom is an editorial toolkit, not a news organization.** It provides prompts, protocols, and templates for AI-assisted analysis of public government records. Users are solely responsible for verifying, editing, and publishing any content produced using this system. This toolkit is designed to complement existing local media, not replace it.
 
 > **IMPORTANT DISCLAIMER:** AI-generated content must be independently verified before publication. This tool does NOT perform journalistic fact-checking. AI can and does fabricate facts, misattribute quotes, and produce flawed analysis. Publishing unverified AI output may constitute defamation or spread misinformation. This is not a substitute for professional journalism. You are solely responsible for everything you publish. See the [Terms of Service](docs/terms.html) for complete legal terms.
-
-> **Want a desktop app instead?** The [Civic Transparency Toolkit](https://github.com/scottconverse/civic-transparency-toolkit) wraps this same nine-agent pipeline into a free desktop app with automated execution, source management, and one-click export. Same editorial architecture, no copy-pasting required.
 
 Since 2005, more than 2,500 U.S. newspapers have closed. Municipal governments continue generating millions of pages of public records — budgets, permits, zoning changes, contracts, council votes — but in most communities, nobody is reading them. Nobody is translating them into stories residents can act on. The information exists. The analysis doesn't.
 
